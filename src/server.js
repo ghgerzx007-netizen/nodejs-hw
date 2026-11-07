@@ -29,7 +29,7 @@ app.use(
 app.get('/notes', (req, res) => {
   res.status(200).json({ message: 'Retrieved all notes' });
 });
-app.get('/notes/:noteId/', (req, res) => {
+app.get('/notes/:noteId', (req, res) => {
   const { noteId } = req.params;
   res.status(200).json({ message: `Retrieved note with ID: ${noteId}` });
 });
@@ -44,6 +44,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).json({ message: `${err.message}` });
 });
-app.listen(5500, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on ${PORT} `);
 });
+
