@@ -4,7 +4,7 @@ import cors from 'cors';
 import pino from 'pino-http';
 
 const app = express();
-const PORT = 5500;
+const PORT = process.env.PORT;
 
 app.use(cors());
 
