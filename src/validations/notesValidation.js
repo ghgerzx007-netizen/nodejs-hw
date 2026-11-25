@@ -7,7 +7,7 @@ export const getAllNotesSchema = {
     page: Joi.number().integer().min(1).default(1),
     perPage: Joi.number().integer().min(5).max(20).default(10),
     search: Joi.string().allow(''),
-    tag: Joi.valid(...TAGS),
+    tag: Joi.valid(...TAGS).optional(),
   }),
 };
 // post
@@ -15,7 +15,7 @@ export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1).required(),
     content: Joi.string().allow(''),
-    tag: Joi.valid(...TAGS),
+    tag: Joi.valid(...TAGS).optional(),
   }),
 };
 export const objectIdValidator = (value, helpers) => {
