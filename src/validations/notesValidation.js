@@ -1,6 +1,6 @@
 import { Segments, Joi } from 'celebrate';
 import { isValidObjectId } from 'mongoose';
-import { TAGS } from '../constans/tags.js';
+import { TAGS } from '../constants/tags.js';
 
 export const getAllNotesSchema = {
   [Segments.QUERY]: Joi.object({
@@ -11,7 +11,7 @@ export const getAllNotesSchema = {
   }),
 };
 // post
-export const createNotesSchema = {
+export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1).required(),
     content: Joi.string().allow(''),
@@ -23,12 +23,12 @@ export const objectIdValidator = (value, helpers) => {
     return value;
   }
 
-  return helpers.message('error');
+  return helpers.message('Invalid noteId');
 };
 export const noteIdSchema = {
-  [Segments.PARAMS]: {
+  [Segments.PARAMS]: Joi.object( {
     noteId: Joi.string().custom(objectIdValidator).required(),
-  },
+  }),
 };
 
 
