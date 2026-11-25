@@ -38,6 +38,6 @@ export const updateNoteSchema = {
     title: Joi.string().min(1),
     content: Joi.string().allow(''),
     tag: Joi.valid(...TAGS),
-  }),
-  ...noteIdSchema,
+  }).min(1),
+  ...noteIdSchema
 };
